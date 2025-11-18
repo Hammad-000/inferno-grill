@@ -22,7 +22,7 @@ const PriceRange = ({ priceRange, initPriceRange, setInitPriceRange }) => {
     <div className="my-4">
       <label className="block text-sm font-semibold">Price Range</label>
       
-      {/* Min Price Range */}
+      
       <div className="mb-4">
         <label className="block text-xs text-gray-600 mb-1">Min Price: ${initPriceRange.min}</label>
         <input
@@ -39,7 +39,7 @@ const PriceRange = ({ priceRange, initPriceRange, setInitPriceRange }) => {
         </div>
       </div>
 
-      {/* Max Price Range */}
+      
       <div>
         <label className="block text-xs text-gray-600 mb-1">Max Price: ${initPriceRange.max}</label>
         <input
