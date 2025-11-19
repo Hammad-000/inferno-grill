@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import Products from "../components/Products";
 import { getVisibleProducts } from "../../src/data/product-filter";
@@ -8,8 +8,9 @@ import SearchBox from "../components/SearchBox";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { products } from "../../src/data/products";
- import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Cart from "../pages/Cart";
 
+// Initialize price range from products
 const initPriceFilter = {
   min: products.min,
   max: products.max,
@@ -23,21 +24,22 @@ function Menu() {
   const [isFilterOpen, setIsFilterOpen] = useState(false); 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filterProducts = getVisibleProducts(
-    selectedCategories,
-    selectedRating,
-    priceRange,
-    searchTerm
-  );
+  // Memoize filtered products to optimize performance
+  const filterProducts = useMemo(() => {
+    return getVisibleProducts(
+      selectedCategories,
+      selectedRating,
+      priceRange,
+      searchTerm
+    );
+  }, [selectedCategories, selectedRating, priceRange, searchTerm]);
 
   const onChangeCategoryHandler = (category, isChecked) => {
-    if (isChecked) {
-      setSelectedCategories([...selectedCategories, category]);
-    } else {
-      setSelectedCategories(
-        selectedCategories.filter((cat) => cat !== category)
-      );
-    }
+    setSelectedCategories(prevState => 
+      isChecked
+        ? [...prevState, category]
+        : prevState.filter((cat) => cat !== category)
+    );
   };
 
   const onChangeRatingHandler = (rating) => {
@@ -49,58 +51,60 @@ function Menu() {
   };
 
   return (
-    
-   
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex justify-between items-center mb-4">
-                <SearchBox onSearchChange={handleSearchChange} /> 
+    <div className="container mx-auto px-4 py-6">
+      {/* Header with Search and Filter Toggle */}
+      <div className="flex justify-between items-center mb-4">
+        <SearchBox onSearchChange={handleSearchChange} /> 
 
-                <button
-                  className="block lg:hidden p-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
-                  onClick={() => setIsFilterOpen(!isFilterOpen)}
-                >
-                  {!isFilterOpen ? (
-                    <AiOutlineMenu size={24} />
-                  ) : (
-                    <IoCloseCircleOutline size={24} />
-                  )}
-                </button>
-              </div>
+        {/* Filter Toggle Button for Mobile */}
+        <button
+          className="block lg:hidden p-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+          aria-expanded={isFilterOpen}
+        >
+          {!isFilterOpen ? (
+            <AiOutlineMenu size={24} />
+          ) : (
+            <IoCloseCircleOutline size={24} />
+          )}
+        </button>
+      </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-                <div
-                  className={`${
-                    isFilterOpen ? "block" : "hidden"
-                  } lg:block lg:col-span-1 border border-gray-300 p-4 bg-white rounded-lg shadow-sm`}
-                >
-                  <CategoryFilter
-                    selectedCategories={selectedCategories}
-                    onChangeCategory={onChangeCategoryHandler}
-                  />
+      {/* Main Content Grid: Filters on the Left, Products on the Right */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        {/* Filters Section */}
+        <div
+          className={`${
+            isFilterOpen ? "block" : "hidden"
+          } lg:block lg:col-span-1 border border-gray-300 p-4 bg-white rounded-lg shadow-sm`}
+        >
+          {/* Category Filter */}
+          <CategoryFilter
+            selectedCategories={selectedCategories}
+            onChangeCategory={onChangeCategoryHandler}
+          />
 
-                  <PriceRange
-                    priceRange={{ min: 100, max: 5000 }}
-                    initPriceRange={priceRange}
-                    setInitPriceRange={setPriceRange}
-                  />
+          {/* Price Range Filter */}
+          <PriceRange
+            priceRange={priceRange}
+            initPriceRange={priceRange}
+            setInitPriceRange={setPriceRange}
+          />
 
-                  <RatingFilter
-                    onChangeRating={onChangeRatingHandler}
-                    selectedRating={selectedRating}
-                  />
-                </div>
+          {/* Rating Filter */}
+          <RatingFilter
+            onChangeRating={onChangeRatingHandler}
+            selectedRating={selectedRating}
+          />
+        </div>
 
-                <div className="lg:col-span-4">
-                  <Products products={filterProducts} />
-                </div>
-              </div>
-            </div>
-         
-    
-    
-    
-          
+        {/* Products Section */}
+        <div className="lg:col-span-4">
+          <Products products={filterProducts} />
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default Menu
+export default Menu;

@@ -122,7 +122,7 @@ export const products = [
     id: 13,
     image: "/images/broast1.avif",
     title: "Broast1",
-    description: "Experience the zest of our quarter broast special! 🍗🍟🍗 Quarter Spicy Broast",
+    description: "Experience the zest of our quarter broast special! Quarter Spicy Broast",
     price: 800,
     category: "Broast",
     rating: 2,
@@ -199,7 +199,7 @@ export const products = [
 
 
 ];
- export const priceRange = {
-   min: 0,
-   max: 4000,
- };
+//  export const priceRange = {
+//    min: 0,
+//    max: ,
+//  };
