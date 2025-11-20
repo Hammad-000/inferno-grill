@@ -5,76 +5,84 @@ import About from "./pages/About";
 import Error from "./pages/Error";  
 import ProductDetailpg from "./pages/ProductDetailpg";
 import Cart from "./pages/Cart";
-import { CartProvider } from "./components/CartContext";
+import { CartProvider, useCart } from "./components/CartContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
-
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+
+// Cart Icon Component with counter
+function CartIcon() {
+  const { cart } = useCart();
+  const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  return (
+    <div className="relative">
+      <NavLink 
+        to="/cart" 
+        className={({ isActive }) => isActive ? 'text-yellow-500' : 'text-white'}
+      >
+        <MdOutlineShoppingCart className="text-xl" />
+      </NavLink>
+      {cartItemsCount > 0 && (
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+          {cartItemsCount}
+        </span>
+      )}
+    </div>
+  );
+}
 
 function App() {
   return (
-     <CartProvider>
-    <Router>
-      {/* Navbar */}
-      <div className="navbar p-3 flex justify-center bg-black">
-        <nav>
-          <ul className="flex space-x-4">
-            <li>
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white'}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/menu" 
-                className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white'}
-              >
-                Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white'}
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/productDetailpg" 
-                className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white'}
-              >
-                Product Details
-              </NavLink>
-            </li>
-            <li>
-              <NavLink 
-                to="/cart" 
-                className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white'}
-                
-              >
-                 <MdOutlineShoppingCart className="text-xl" />
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <CartProvider>
+      <Router>
+        {/* Navbar */}
+        <div className="navbar p-4 flex justify-between items-center bg-black">
+          {/* Navigation Links Centered */}
+          <nav className="flex-1 flex justify-center">
+            <ul className="flex space-x-8">
+              <li>
+                <NavLink 
+                  to="/" 
+                  className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/menu" 
+                  className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
+                >
+                  Menu
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to="/about" 
+                  className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
+                >
+                  About
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
 
-      {/* Routes */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/about" element={<About />} />
-        {/* Dynamic route for product details */}
-        <Route path="/productDetail/:id" element={<ProductDetailpg />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="*" element={<Error />} /> 
-      </Routes>
-    </Router>
-     </CartProvider>
+          {/* Cart Icon on the Right */}
+          <div className="flex items-center">
+            <CartIcon />
+          </div>
+        </div>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/productDetail/:id" element={<ProductDetailpg />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

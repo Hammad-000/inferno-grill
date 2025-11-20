@@ -141,7 +141,7 @@ export const products = [
     image: "/images/broast3.webp",
     title: "Broast3",
     description: "Crispy fried chicken broast recipe for foodies. It's a KFC style fried chicken broast that you can",
-    price: 1500,
+    price: 1600,
     category: "Broast",
     rating: 2,
   },
@@ -199,7 +199,7 @@ export const products = [
 
 
 ];
-//  export const priceRange = {
-//    min: 0,
-//    max: ,
-//  };
+  // export const priceRange = {
+  //   min: 0,
+  //   max: 5000,
+  // };
