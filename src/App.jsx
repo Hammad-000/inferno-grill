@@ -23,7 +23,7 @@ function CartIcon() {
         <MdOutlineShoppingCart className="text-xl" />
       </NavLink>
       {cartItemsCount > 0 && (
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+        <span className="absolute -top-2 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
           {cartItemsCount}
         </span>
       )}
@@ -64,6 +64,17 @@ function App() {
                   About
                 </NavLink>
               </li>
+              <li>
+                <NavLink 
+                  to="/productDetail" 
+                  className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
+                >
+                  Product Detail
+                </NavLink>
+              </li>
+
+
+
             </ul>
           </nav>
 
@@ -77,7 +88,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/about" element={<About />} />
-          <Route path="/productDetail/:id" element={<ProductDetailpg />} />
+           <Route path="/productDetail/:id" element={<ProductDetailpg />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>

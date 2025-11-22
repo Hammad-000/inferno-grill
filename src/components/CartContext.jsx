@@ -17,20 +17,21 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   // Add product to cart
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      
-      const existingProductIndex = prevCart.findIndex((item) => item.id === product.id);
-      if (existingProductIndex >= 0) {
-       
-        const updatedCart = [...prevCart];
-        updatedCart[existingProductIndex].quantity += 1;
-        return updatedCart;
-      }
-
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
-  };
+const addToCart = (product) => {
+  setCart((prevCart) => {
+    const existingProduct = prevCart.find((item) => item.id === product.id);
+    if (existingProduct) {
+      // Return new array with updated quantity
+      return prevCart.map((item) =>
+        item.id === product.id 
+          ? { ...item, quantity: item.quantity + 1 } 
+          : item
+      );
+    }
+    // Product doesn't exist, add new one
+    return [...prevCart, { ...product, quantity: 1 }];
+  });
+};
 
 
   const removeFromCart = (productId) => {

@@ -27,7 +27,7 @@ function Home() {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, );
+  },);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -65,7 +65,7 @@ function Home() {
                   key={index}
                   src={img}
                   alt={`slider-image-${index}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-4000 ease-in-out ${
                     index === currentIndex ? "opacity-100" : "opacity-0"
                   }`}
                 />
@@ -86,7 +86,7 @@ function Home() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-3 h-3 rounded-full transition-all duration-100 ${
                     index === currentIndex 
                       ? "bg-white scale-125" 
                       : "bg-white bg-opacity-50 hover:bg-opacity-75"
@@ -103,22 +103,58 @@ function Home() {
         </div>
 
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto ">
+          <div className="text-center p-6 bg-white rounded-lg  border">
             <h3 className="text-xl font-semibold mb-3">Fast Delivery</h3>
             <p className="text-gray-600">Get your products delivered quickly and safely to your doorstep.</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
+          <div className="text-center p-6 bg-white rounded-lg  border ">
             <h3 className="text-xl font-semibold mb-3">Best Quality</h3>
             <p className="text-gray-600">We guarantee the highest quality products from trusted brands.</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
+          <div className="text-center p-6 bg-white rounded-lg border ">
             <h3 className="text-xl font-semibold mb-3">24/7 Support</h3>
             <p className="text-gray-600">Our customer support team is always here to help you.</p>
           </div>
         </div>
       </main>
 
+       <section   className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto "       >
+
+          <div className="text-center p-6 bg-white rounded-lg h-full border">
+           <img src="/images/broast1.avif" alt="" />
+            <h5 className="text-xl font-semibold mb-3">Experience the zest of our quarter broast special! Quarter Spicy Broast</h5>
+
+            <p className="text-gray-600"></p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg h-full border">
+           <img src="/images/slideimg2.jfif" alt="" />
+            <h5 className="text-xl font-semibold mb-3">Experience the zest of our quarter broast special! Quarter Spicy Broast</h5>
+
+            <p className="text-gray-600"></p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg h-full border">
+           <img src="/images/slideimg3.jfif" alt="" />
+            <h5 className="text-xl font-semibold mb-3">This pepperoni pizza recipe uses tomato sauce and oregano on a prebaked crust and is topped with cheeze</h5>
+
+            <p className="text-gray-600"></p>
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       </section>
     
       <footer className="bg-gray-800 text-white mt-16">
         <div className="container mx-auto px-6 py-8">

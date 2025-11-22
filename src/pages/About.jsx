@@ -91,6 +91,7 @@ function About() {
           </a>
         </div>
       </section>
+      
     </div>
   );
 }

@@ -121,7 +121,7 @@ export const reviews = [
     id: 14,
     productid: 9,
     username: "Ali Arshad",
-    date: "1/4/2021",
+    date: "10/4/2021",
     rating: 2.0,
     review: "Not much recommended Product, very cheap product",
     isApproved: true
@@ -166,15 +166,15 @@ export const reviews = [
     id: 19,
     productid: 9,
     username: "Ali Arshad",
-    date: "1/4/2021",
-    rating: 3.0,
+    date: "1/6/2021",
+    rating: 2.0,
     review: "Not much recommended Product, very cheap product",
     isApproved: true
   },
   {
     id: 20,
     productid: 5,
-    username: "Ali Arshad",
+    username: "Ammar Arshad",
     date: "1/4/2021",
     rating: 5.0,
     review: "Not much recommended Product, very cheap product",
