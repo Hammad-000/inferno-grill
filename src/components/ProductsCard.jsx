@@ -48,7 +48,7 @@ function ProductsCard({ product }) {
             </h4>
             <button
               onClick={handleAddToCart}  
-              className="p-3 gap-2 flex rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white transition-all duration-200 transform hover:scale-110"
+              className="p-3 gap-2 border flex rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white transition-all duration-200 transform hover:scale-110"
             >
               <MdOutlineShoppingCart className="text-xl" /> <p>Add to Cart</p>
             </button>

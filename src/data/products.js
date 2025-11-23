@@ -192,13 +192,53 @@ export const products = [
     category: "Fries",
     rating: 5,
     
+  },
+  {
+    id: 21,
+    image: "/images/roasted1.jfif",
+    title: "Roasted1",
+    description: "These French fries But are super crunchy and easy to make. You don't need a heavy-duty fryer and you",
+    price: 1200,
+    category: "Roasted Chicken",
+    rating: 5,
+    
+  },
+  {
+    id: 22,
+    image: "/images/roasted2.jfif",
+    title: "Roasted2",
+    description: "This is my new favorite way to “roast” chicken and I think it’s about to be yours too! Air Frying a Whole Tandoori",
+    price: 1800,
+    category: "Roasted Chicken",
+    rating: 5,
+    
+  },
+  {
+    id: 23,
+    image: "/images/roasted3.avif",
+    title: "Roasted3",
+    description: "Warm spices like ginger, turmeric, cinnamon and cumin mixed with yogurt make the marinade for this ",
+    price: 1200,
+    category: "Roasted Chicken",
+    rating: 4,
+    
+  },
+  {
+    id: 24,
+    image: "/images/roasted4.jpg",
+    title: "Roasted4",
+    description: "We’ve been making this roasted chicken in my family for years, so I’ve spent a lot of time tweaking ",
+    price: 1700,
+    category: "Roasted Chicken",
+    rating: 5,
+    
   }
 
 
 
 
 
-];
+]
   // export const priceRange = {
   //   min: 0,
   //   max: 5000,

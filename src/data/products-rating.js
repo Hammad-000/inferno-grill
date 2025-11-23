@@ -179,11 +179,16 @@ export const reviews = [
     rating: 5.0,
     review: "Not much recommended Product, very cheap product",
     isApproved: true
+  },
+  {
+    id: 21,
+    productid: 5,
+    username: "Ammar Arshad",
+    date: "1/9/2021",
+    rating: 4.5,
+    review: "Not much recommended Product, very cheap product",
+    isApproved: true
   }
-
-
-
-
 
 
 
