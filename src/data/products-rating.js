@@ -188,6 +188,33 @@ export const reviews = [
     rating: 4.5,
     review: "Not much recommended Product, very cheap product",
     isApproved: true
+  },
+  {
+    id: 22,
+    productid: 5,
+    username: "Ammar Arshad",
+    date: "1/9/2021",
+    rating: 4.5,
+    review: "Not much recommended Product, very cheap product",
+    isApproved: true
+  },
+  {
+    id: 23,
+    productid: 5,
+    username: "Ammar Arshad",
+    date: "1/9/2021",
+    rating: 4.5,
+    review: "Not much recommended Product, very cheap product",
+    isApproved: true
+  },
+  {
+    id: 24,
+    productid: 5,
+    username: "Anwar",
+    date: "1/9/2021",
+    rating: 4.5,
+    review: "recommended Product, very good product",
+    isApproved: true
   }
 
 
