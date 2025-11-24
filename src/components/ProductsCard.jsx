@@ -16,15 +16,17 @@ function ProductsCard({ product }) {
         className="border rounded-xl shadow-md hover:shadow-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 ease-in-out bg-white h-full flex flex-col"
       >
         <div className="relative w-full h-48 overflow-hidden shrink-0">
-          <img
-            className="w-full h-full object-cover hover:scale-110 transition-transform duration-500 ease-in-out"
-            src={product.image}
-            alt={product.title}
-            onError={(e) => {
-              e.target.src = "https://via.placeholder.com/300x200?text=Image+Not+Found";
-              e.target.alt = "Image not available";
-            }}
-          />
+         <img
+  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500 ease-in-out"
+  src={product.image}
+  alt={product.title}
+  onError={(e) => {
+    console.log(`Image failed to load: ${product.image}`);
+    e.target.src = "https://via.placeholder.com/300x200/FF0000/FFFFFF?text=Image+Not+Found";
+    e.target.alt = "Image not available";
+  }}
+  onLoad={() => console.log(`Image loaded: ${product.image}`)}
+/>
         </div>
 
         <div className="p-4 sm:p-6 flex-1 flex flex-col">

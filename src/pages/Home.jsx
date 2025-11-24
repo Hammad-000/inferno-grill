@@ -114,7 +114,7 @@ function Home() {
               We guarantee the highest quality products from trusted brands.
             </p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
+          <div className="text-center p-6 bg-white rounded-lg border hover:shadow transition-all duration-300">
             <h3 className="text-xl font-semibold mb-3">24/7 Support</h3>
             <p className="text-gray-600">Our customer support team is always here to help you.</p>
           </div>
@@ -168,8 +168,8 @@ function Home() {
       "/images/roasted1.jfif",
       "/images/slideimg2.jfif",
       "/images/french4.webp",
-      "/images/broast1.avif",
       "/images/broast2.webp",
+      "/images/pizza1.avif",
       "/images/french2.webp",
       "/images/broast3.webp"
     ].map((src, index) => (

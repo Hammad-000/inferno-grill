@@ -38,8 +38,12 @@ function App() {
         {/* Navbar */}
         <div className="navbar p-4 flex justify-between items-center bg-black">
           {/* Navigation Links Centered */}
+          <div>  <li>
+                <img  className="w-10" src="/images/logo.jfif" alt="" />
+              </li></div>
           <nav className="flex-1 flex justify-center">
             <ul className="flex space-x-8">
+            
               <li>
                 <NavLink 
                   to="/" 
