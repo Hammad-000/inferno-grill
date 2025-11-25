@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import Footer from "../components/footer";
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,8 +46,8 @@ function Home() {
   }, [currentIndex]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <main className="container mx-auto px-6 py-8">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <main className="container mx-auto px-6 py-8 flex-grow">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Welcome to Our Store
@@ -57,7 +58,7 @@ function Home() {
         </div>
 
         {/* Enhanced Smooth Slider Section */}
-        <div className="relative w-full max-w-7xl mx-auto mb-12">
+        <div className="relative w-full max-w-6xl mx-auto mb-12">
           <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
             {/* Top Navigation Arrows */}
             <button
@@ -76,8 +77,8 @@ function Home() {
                   src={img}
                   alt={`slider-image-${index}`}
                   className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out ${
-                    index === currentIndex 
-                      ? "opacity-100 scale-100" 
+                    index === currentIndex
+                      ? "opacity-100 scale-100"
                       : "opacity-0 scale-105"
                   }`}
                 />
@@ -91,7 +92,6 @@ function Home() {
             >
               &gt;
             </button>
-
 
             {/* Slide Count */}
             <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm z-10 backdrop-blur-sm">
@@ -119,104 +119,79 @@ function Home() {
             <p className="text-gray-600">Our customer support team is always here to help you.</p>
           </div>
         </div>
+
+        {/* Product Section */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto mt-12">
+          <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
+            <img
+              src="/images/broast1.avif"
+              alt="Broast"
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
+            <h5 className="text-xl font-semibold mb-3">Quarter Spicy Broast</h5>
+            <p className="text-gray-600">Experience the zest of our quarter broast special!</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
+            <img
+              src="/images/roasted3.avif"
+              alt="Slide 2"
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
+            <h5 className="text-xl font-semibold mb-3">Roasted Chicken</h5>
+            <p className="text-gray-600">Experience the zest of our quarter broast special!</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
+            <img
+              src="/images/slideimg3.jfif"
+              alt="Pizza"
+              className="w-full h-64 object-cover rounded-lg mb-4"
+            />
+            <h5 className="text-xl font-semibold mb-3">Pepperoni Pizza</h5>
+            <p className="text-gray-600">
+              This pepperoni pizza recipe uses tomato sauce and oregano on a prebaked crust
+            </p>
+          </div>
+        </section>
+
+        <div className="text-center py-14 rounded-2xl mx-4 mb-12 mt-3.5">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">OUR SPECIALTIES</h1>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4">
+            {[
+              "/images/slideimg3.jfif",
+              "/images/roasted2.jfif",
+              "/images/burger2.webp",
+              "/images/download.jfif",
+              "/images/roasted4.jpg",
+              "/images/roasted1.jfif",
+              "/images/slideimg2.jfif",
+              "/images/french4.webp",
+              "/images/broast2.webp",
+              "/images/pizza1.avif",
+              "/images/french2.webp",
+              "/images/broast3.webp"
+            ].map((src, index) => (
+              <div
+                key={index}
+                className="aspect-square overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <img
+                  src={src}
+                  alt={`Menu item ${index + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+
+          <h2 className="text-3xl font-bold text-gray-800 mb-4 pt-5 tracking-tight">
+            EXPLORE OUR FOOD
+          </h2>
+        </div>
       </main>
 
-      {/* Product Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12">
-        <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
-          <img 
-            src="/images/broast1.avif" 
-            alt="Broast" 
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
-          <h5 className="text-xl font-semibold mb-3">Quarter Spicy Broast</h5>
-          <p className="text-gray-600">Experience the zest of our quarter broast special!</p>
-        </div>
-        <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
-          <img 
-            src="/images/roasted3.avif" 
-            alt="Slide 2" 
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
-          <h5 className="text-xl font-semibold mb-3">Roasted Chicken</h5>
-          <p className="text-gray-600">Experience the zest of our quarter broast special!</p>
-        </div>
-        <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
-          <img 
-            src="/images/slideimg3.jfif" 
-            alt="Pizza" 
-            className="w-full h-64 object-cover rounded-lg mb-4"
-          />
-          <h5 className="text-xl font-semibold mb-3">Pepperoni Pizza</h5>
-          <p className="text-gray-600">
-            This pepperoni pizza recipe uses tomato sauce and oregano on a prebaked crust
-          </p>
-        </div>
-
-    </section>
-
-    <div className="text-center py-16 bg-white rounded-3xl mx-4 mb-12 border border-gray-200 shadow-sm">
-  <h1 className="text-4xl font-bold text-gray-900 mb-8">OUR SPECIALTIES</h1>
-  
-  <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-6xl mx-auto px-4">
-    {[
-      "/images/slideimg3.jfif",
-      "/images/roasted2.jfif",
-      "/images/burger2.webp",
-      "/images/download.jfif",
-      "/images/roasted4.jpg",
-      "/images/roasted1.jfif",
-      "/images/slideimg2.jfif",
-      "/images/french4.webp",
-      "/images/broast2.webp",
-      "/images/pizza1.avif",
-      "/images/french2.webp",
-      "/images/broast3.webp"
-    ].map((src, index) => (
-      <div 
-        key={index}
-        className="aspect-square overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-      >
-        <img 
-          src={src} 
-          alt={`Menu item ${index + 1}`}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-    ))}
-  </div>
-
-  <h2 className="text-4xl font-bold text-gray-800 mb-4 pt-5 tracking-tight">
-  EXPLORE OUR FOOD
-
-</h2>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white mt-16">
-        <div className="container mx-auto px-6 py-4">
-          <div className="text-center">
-            <p>&copy; 2025 Your Inferno-Grill. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      
+      <Footer />
     </div>
   );
 }

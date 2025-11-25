@@ -8,6 +8,7 @@ import SearchBox from "../components/SearchBox";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { products } from "../../src/data/products";
+import Footer from "../components/footer";
 // import { CartContext } from "../components/CartContext";
 
 const initPriceFilter = {
@@ -104,13 +105,7 @@ function Menu() {
       </div>
 
 
-         <footer className="bg-gray-800 text-white mt-16">
-        <div className="container mx-auto px-6 py-4">
-          <div className="text-center">
-            <p>&copy; 2025 Your Inferno-Grill. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+        <Footer />
 
 
 

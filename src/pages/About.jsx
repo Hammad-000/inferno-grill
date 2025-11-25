@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/footer";
 
 function About() {
   const teamMembers = [
@@ -80,7 +81,7 @@ function About() {
       </section>
 
      
-      <section className="py-16 bg-black text-white">
+      <section className="py-16 ">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Shop With Us?</h2>
           <a
@@ -93,13 +94,8 @@ function About() {
         
       </section>
       
-     <footer className="bg-gray-800 text-white ">
-        <div className="container mx-auto px-6 py-4">
-          <div className="text-center">
-            <p>&copy; 2025 Your Inferno-Grill. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>  
+    
+     <Footer />
     </div>
     
   );

@@ -9,6 +9,7 @@ import { CartProvider, useCart } from "./components/CartContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 
+
 // Cart Icon Component with counter
 function CartIcon() {
   const { cart } = useCart();
@@ -36,7 +37,7 @@ function App() {
     <CartProvider>
       <Router>
         {/* Navbar */}
-        <div className="navbar p-4 flex justify-between items-center bg-black">
+        <nav className="navbar p-4 flex justify-between items-center bg-black">
           {/* Navigation Links Centered */}
           <div>  <li>
                 <img  className="w-10" src="/images/logo.jfif" alt="" />
@@ -69,15 +70,13 @@ function App() {
                 </NavLink>
               </li>
               <li>
-                <NavLink 
+                {/* <NavLink 
                   to="/productDetail" 
                   className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
                 >
                   Product Detail
-                </NavLink>
+                </NavLink> */}
               </li>
-
-
 
             </ul>
           </nav>
@@ -86,7 +85,8 @@ function App() {
           <div className="flex items-center">
             <CartIcon />
           </div>
-        </div>
+     
+        </nav>
 
         <Routes>
           <Route path="/" element={<Home />} />
