@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../components/FooterContent";
+import FooterContent from "../components/FooterContent";
 
 function About() {
   const teamMembers = [
@@ -28,7 +29,7 @@ function About() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Hero Section */}
-      <section className=" py-20">
+      <section className="  py-20">
         <div className="container mx-auto px-6 text-center">
           <h1 className="text-5xl font-bold mb-6">About Our Store</h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
@@ -63,7 +64,7 @@ function About() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-md text-center">
+              <div key={index} className="bg-white border p-6 rounded-2xl shadow-md text-center">
                 <div className="w-20 h-20 bg-yellow-400 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
                   {member.name.charAt(0)}
                 </div>
@@ -83,7 +84,7 @@ function About() {
      
       <section className="py-16 ">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Shop With Us?</h2>
+          <h2 className="text-4xl font-bold mb-6">Your meal is Ready</h2>
           <a
             href="/menu"
             className=" px-8 py-3 bg-yellow-400 rounded-lg font-semibold transition-colors inline-block"
@@ -95,7 +96,7 @@ function About() {
       </section>
       
     
-     <Footer />
+     <FooterContent />
     </div>
     
   );

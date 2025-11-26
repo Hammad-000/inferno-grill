@@ -17,7 +17,7 @@ function SearchBox({ onSearchChange }) {
         placeholder="Search for products"
         value={searchTerm}
         onChange={handleInputChange}
-        className="border px-4 py-2 w-3xl rounded"
+        className="border px-4 py-2 w-2xl rounded"
       />
     </div>
   );

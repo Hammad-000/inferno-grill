@@ -21,7 +21,7 @@ function CartIcon() {
         to="/cart" 
         className={({ isActive }) => isActive ? 'text-yellow-500' : 'text-white'}
       >
-        <MdOutlineShoppingCart className="text-xl" />
+        <MdOutlineShoppingCart className="text-2xl" />
       </NavLink>
       {cartItemsCount > 0 && (
         <span className="absolute -top-2 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -36,14 +36,15 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        {/* Navbar */}
-        <nav className="navbar p-4 flex justify-between items-center bg-black">
-          {/* Navigation Links Centered */}
+    
+        <nav className="navbar p-4 flex justify-between bg-gray-800 items-center ">
+      
           <div>  <li>
-                <img  className="w-10" src="/images/logo.jfif" alt="" />
+            
+                <img  to="/menu" className="w-10 rounded" src="/public/images/logo2.jfif" alt="" />
               </li></div>
           <nav className="flex-1 flex justify-center">
-            <ul className="flex space-x-8">
+            <ul className="flex space-x-6">
             
               <li>
                 <NavLink 
@@ -81,7 +82,6 @@ function App() {
             </ul>
           </nav>
 
-          {/* Cart Icon on the Right */}
           <div className="flex items-center">
             <CartIcon />
           </div>

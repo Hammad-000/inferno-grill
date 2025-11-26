@@ -9,7 +9,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { products } from "../../src/data/products";
 import FooterContent from "../components/FooterContent";
-// import { CartContext } from "../components/CartContext";
+import SortingFilter from "../components/SortingFilter";
 
 const initPriceFilter = {
   min: Math.min(...products.map(product => product.price)),
@@ -23,17 +23,26 @@ function Menu() {
   const [priceRange, setPriceRange] = useState(initPriceFilter);
   const [isFilterOpen, setIsFilterOpen] = useState(false); 
   const [searchTerm, setSearchTerm] = useState("");
+  const [sorting, setSorting] = useState(""); 
+
   
-
-
   const filterProducts = useMemo(() => {
-    return getVisibleProducts(
+    let visibleProducts = getVisibleProducts(
       selectedCategories,
       selectedRating,
       priceRange,
       searchTerm
     );
-  }, [selectedCategories, selectedRating, priceRange, searchTerm]);
+
+  
+    if (sorting === "price") {
+      visibleProducts = [...visibleProducts].sort((a, b) => a.price - b.price);
+    } else if (sorting === "rating") {
+      visibleProducts = [...visibleProducts].sort((a, b) => a.rating - b.rating);
+    }
+
+    return visibleProducts;
+  }, [selectedCategories, selectedRating, priceRange, searchTerm, sorting]);
 
   const onChangeCategoryHandler = (category, isChecked) => {
     setSelectedCategories(prevState => 
@@ -55,12 +64,21 @@ function Menu() {
     setSearchTerm(term);  
   };
 
+
+  const handleSorting = (sort) => {
+    setSorting(sort);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Main Content - No duplicate navigation */}
       <div className="container mx-auto px-4 py-6">
-        <div className="flex justify-between items-center mb-4">
-          <SearchBox onSearchChange={handleSearchChange} /> 
+        <div className="flex justify-between items-center mb-4 flex-col lg:flex-row">
+          
+          <div className="min-w-2/6 lg:w-auto mb-4 lg:mb-0 flex justify-between lg:gap-2">
+            <SearchBox onSearchChange={handleSearchChange} className="w-full lg:w-auto" /> 
+            <SortingFilter handleSorting={handleSorting} className="w-full lg:w-auto" />
+          </div>
+
           <button
             className="block lg:hidden p-2 border rounded-lg bg-gray-100 hover:bg-gray-200"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -99,16 +117,12 @@ function Menu() {
           </div>
 
           <div className="lg:col-span-4">
-            <Products products={filterProducts} />
+            <Products products={filterProducts} /> {/* Display filtered and sorted products */}
           </div>
         </div>
       </div>
 
-
-        <FooterContent />
-
-
-
+      <FooterContent />
     </div>
   );
 }
