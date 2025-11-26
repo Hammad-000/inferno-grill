@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import Footer from "../components/footer";
+import Footer from "../components/FooterContent";
+import FooterContent from "../components/FooterContent";
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -191,7 +192,7 @@ function Home() {
       </main>
 
       
-      <Footer />
+      <FooterContent />
     </div>
   );
 }

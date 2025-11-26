@@ -1,6 +1,7 @@
 import React from "react";
-import Footer from "../components/footer";
+import Footer from "../components/FooterContent";
 import Home from "./Home";
+import FooterContent from "../components/FooterContent";
 
 function Error() {
   return (
@@ -11,7 +12,7 @@ function Error() {
 
       </button>
      
-     <Footer />
+     <FooterContent />
     </div>
   );
 }

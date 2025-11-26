@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Footer = () => {
+const FooterContent = () => {
     return (
         
-            <footer className="bg-gray-800 text-white">
+            <div className="bg-gray-800 text-white">
   <div className="container mx-auto px-6 py-8">
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-start max-w-4xl mx-auto">
       {/* Branches Section */}
@@ -76,9 +76,9 @@ const Footer = () => {
       </p>
     </div>
   </div>
-</footer>
+</div>
         
     );
 };
 
-export default Footer;
+export default FooterContent;

@@ -8,7 +8,7 @@ import SearchBox from "../components/SearchBox";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { products } from "../../src/data/products";
-import Footer from "../components/footer";
+import FooterContent from "../components/FooterContent";
 // import { CartContext } from "../components/CartContext";
 
 const initPriceFilter = {
@@ -105,7 +105,7 @@ function Menu() {
       </div>
 
 
-        <Footer />
+        <FooterContent />
 
 
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCart } from "../components/CartContext";
-import Footer from "../components/footer";
+import Footer from "../components/FooterContent";
+import FooterContent from "../components/FooterContent";
 
 function Cart() {
   const { cart, removeFromCart, incrementQuantity, decrementQuantity, calculateTotalPrice } = useCart();
@@ -33,7 +34,7 @@ function Cart() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <div className="flex-grow container mx-auto px-4 py-8">
+      <div className="grow container mx-auto px-4 py-8">
         <h2 className="text-3xl font-bold text-gray-800 mb-8">Your Shopping Cart</h2>
 
         {cart.length === 0 ? (
@@ -55,7 +56,7 @@ function Cart() {
                   {cart.map((product) => (
                     <div key={product.id} className="p-6 flex flex-col sm:flex-row items-center gap-4 hover:bg-gray-50 transition-colors">
                       {/* Product Image */}
-                      <div className="flex-shrink-0">
+                      <div className="shrink-0">
                         <img
                           src={product.image}
                           alt={product.title}
@@ -64,7 +65,7 @@ function Cart() {
                       </div>
 
                       {/* Product Info */}
-                      <div className="flex-grow text-center sm:text-left">
+                      <div className="grow text-center sm:text-left">
                         <h4 className="font-semibold text-gray-800 line-clamp-2 mb-1">
                           {product.title}
                         </h4>
@@ -252,7 +253,7 @@ function Cart() {
           </div>
         )}
       </div>
-      <Footer />
+      <FooterContent />
     </div>
   );
 }
