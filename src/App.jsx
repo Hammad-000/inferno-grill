@@ -71,12 +71,12 @@ function App() {
                 </NavLink>
               </li>
               <li>
-                {/* <NavLink 
+                <NavLink 
                   to="/productDetail" 
                   className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
                 >
                   Product Detail
-                </NavLink> */}
+                </NavLink>
               </li>
 
             </ul>

@@ -58,19 +58,10 @@ function Home() {
           </p>
         </div>
 
-        {/* Enhanced Smooth Slider Section */}
         <div className="relative w-full max-w-6xl mx-auto mb-12">
-          <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
-            {/* Top Navigation Arrows */}
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 text-white text-4xl bg-black bg-opacity-50 hover:bg-opacity-70 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
-              disabled={isTransitioning}
-            >
-              &lt;
-            </button>
 
-            {/* Smooth Slider Images */}
+          <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
+    
             <div className="relative w-full h-full">
               {images.map((img, index) => (
                 <img
@@ -86,22 +77,48 @@ function Home() {
               ))}
             </div>
 
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 text-white text-4xl bg-black bg-opacity-50 hover:bg-opacity-70 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
-              disabled={isTransitioning}
-            >
-              &gt;
-            </button>
-
-            {/* Slide Count */}
+      
             <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm z-10 backdrop-blur-sm">
               {currentIndex + 1} / {images.length}
             </div>
           </div>
+
+   
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <button
+              onClick={prevImage}
+              className="text-white text-2xl md:text-3xl bg-black bg-opacity-80 hover:bg-opacity-100 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
+              disabled={isTransitioning}
+            >
+              &lt;
+            </button>
+      
+            <div className="flex items-center gap-2 mx-4">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-black scale-125"
+                      : "bg-gray-400 hover:bg-gray-600"
+                  }`}
+                  disabled={isTransitioning}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextImage}
+              className="text-white text-2xl md:text-3xl bg-black bg-opacity-80 hover:bg-opacity-100 w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
+              disabled={isTransitioning}
+            >
+              &gt;
+            </button>
+          </div>
         </div>
 
-        {/* Benefits Section */}
+  
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
             <h3 className="text-xl font-semibold mb-3">Fast Delivery</h3>
@@ -121,7 +138,6 @@ function Home() {
           </div>
         </div>
 
-        {/* Product Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto mt-12">
           <div className="text-center p-6 bg-white rounded-lg border hover:shadow-lg transition-all duration-300">
             <img
@@ -187,13 +203,18 @@ function Home() {
 
           <h2 className="text-3xl font-bold text-gray-800 mb-4 pt-5 tracking-tight">
             EXPLORE OUR FOOD
+           
           </h2>
+          <a
+            href="/menu"
+            className=" px-5 py-3 bg-yellow-400 rounded-lg  font-semibold transition-colors inline-block"
+          >
+            Wanna Order 
+          </a>
         </div>
+
       </main>
 
-     
-
-      
       <FooterContent />
     </div>
   );
