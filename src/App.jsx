@@ -70,14 +70,14 @@ function App() {
                   About
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink 
                   to="/productDetail" 
                   className={({ isActive }) => isActive ? 'text-yellow-500 font-semibold' : 'text-white hover:text-yellow-400 transition-colors'}
                 >
                   Product Detail
                 </NavLink>
-              </li>
+              </li> */}
 
             </ul>
           </nav>
@@ -92,7 +92,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/about" element={<About />} />
-           <Route path="/productDetail/:id" element={<ProductDetailpg />} />
+           {/* <Route path="/productDetail/:id" element={<ProductDetailpg />} /> */}
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<Error />} />
         </Routes>
