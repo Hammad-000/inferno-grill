@@ -121,7 +121,7 @@ function About() {
         </div>
       </section>
 
-      {/* Our Story Section */}
+     
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
@@ -150,7 +150,7 @@ function About() {
               <div className="grid grid-cols-2 gap-4">
                 <div className=" text-center text-xl">
                 <img
-                  src="/public/images/staf.jfif"
+                  src="/images/staf.jfif"
                   alt="Our Kitchen Team"
                   className="rounded-2xl shadow-lg w-full h-64 object-cover"
                   />
@@ -160,7 +160,7 @@ function About() {
                     <div className=" text-center text-xl">
 
                 <img
-                  src="/public/images/fresh.jfif"
+                  src="/images/fresh.jfif"
                   alt="Fresh Ingredients"
                   className="rounded-2xl shadow-lg w-full h-64 object-cover mt-8"
                   />
@@ -171,7 +171,7 @@ function About() {
                   <div className=" text-center text-xl">
 
                 <img
-                  src="/public/images/rider.jfif"
+                  src="/images/rider.jfif"
                   alt="Delivery Service"
                   className="rounded-2xl shadow-lg w-full h-64 object-cover"
                   />
@@ -181,7 +181,7 @@ function About() {
                 <div className=" text-center text-xl">
 
                 <img
-                  src="/public/images/happy.jfif"
+                  src="/images/happy.jfif"
                   alt="Happy Customer"
                   className="rounded-2xl shadow-lg w-full h-64 object-cover mt-8"
                   />
@@ -193,13 +193,13 @@ function About() {
         </div>
       </section>
 
-      {/* Timeline Section */}
+
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Our Milestones</h2>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline line */}
+
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-amber-200 h-full"></div>
               
               {milestones.map((milestone, index) => (
@@ -221,7 +221,7 @@ function About() {
         </div>
       </section>
 
-      {/* Values Section */}
+    
       <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Our Values</h2>
@@ -237,7 +237,6 @@ function About() {
         </div>
       </section>
 
-      {/* Enhanced Team Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -270,7 +269,6 @@ function About() {
         </div>
       </section>
 
-      {/* Quality Commitment Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
@@ -304,7 +302,6 @@ function About() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
       <section className="py-20 bg-gradient-to-r from-yellow-600 to-orange-500">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-5xl font-bold text-white mb-6">Ready to Taste the Difference?</h2>

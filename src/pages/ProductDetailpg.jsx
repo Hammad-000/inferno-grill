@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Import Link
 import { products } from '../data/products';
+import { useCart } from '../components/CartContext'; // Import useCart
 
 function ProductDetailpg() {
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart(); // Get addToCart function from CartContext
 
   useEffect(() => {
     const fetchProduct = () => {
@@ -22,18 +24,28 @@ function ProductDetailpg() {
     fetchProduct();
   }, [id]);
 
-  const addToCart = () => {
-    // Add to cart functionality
-    console.log(`Added ${quantity} ${product.title} to cart`);
+  const handleAddToCart = () => {
+    if (!product) return;
+    
+    // Create an array of products based on quantity
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    
+    // Optional: Show success message or notification
+    console.log(`Added ${quantity} ${product.title}(s) to cart`);
+    
+    // Optional: Reset quantity to 1 after adding
+    setQuantity(1);
   };
 
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
         <div className="text-2xl font-bold text-gray-600">Product not found</div>
-        <a href="/" className="mt-4 inline-block text-blue-500 hover:underline">
+        <Link to="/" className="mt-4 inline-block text-blue-500 hover:underline">
           Return to Home
-        </a>
+        </Link>
       </div>
     );  
   }
@@ -41,18 +53,18 @@ function ProductDetailpg() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        {/* Breadcrumb */}
+        {/* Breadcrumb - Fixed with Link components */}
         <nav className="mb-6 text-sm text-gray-600">
-          <a href="/" className="hover:text-blue-500">Home</a> 
+          <Link to="/" className="hover:text-blue-500">Home</Link> 
           <span className="mx-2">/</span>
-          <a href="/products" className="hover:text-blue-500">Products</a>
+          <Link to="/menu" className="hover:text-blue-500">Products</Link>
           <span className="mx-2">/</span>
           <span className="text-gray-900">{product.title}</span>
         </nav>
 
         <div className="flex flex-col lg:flex-row gap-8 bg-white rounded-2xl shadow-lg p-6">
           {/* Product Image */}
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 h-full">
             <img
               src={product.image}
               alt={product.title}
@@ -102,7 +114,7 @@ function ProductDetailpg() {
 
             {/* Add to Cart Button */}
             <button 
-              onClick={addToCart}
+              onClick={handleAddToCart}
               className="w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg mb-4"
             >
               Add to Cart - ${(product.price * quantity).toFixed(2)}
@@ -119,7 +131,7 @@ function ProductDetailpg() {
           </div>
         </div>
 
-        {/* Related Products Section (Optional) */}
+        {/* Related Products Section */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold mb-6">You Might Also Like</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -127,10 +139,10 @@ function ProductDetailpg() {
               .filter(p => p.id !== product.id)
               .slice(0, 3)
               .map(relatedProduct => (
-                <a 
+                <Link 
                   key={relatedProduct.id}
-                  href={`/product/${relatedProduct.id}`}
-                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  to={`/product/${relatedProduct.id}`}
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 block"
                 >
                   <img
                     src={relatedProduct.image}
@@ -141,7 +153,7 @@ function ProductDetailpg() {
                     <h3 className="font-semibold mb-2">{relatedProduct.title}</h3>
                     <p className="text-amber-600 font-bold">${relatedProduct.price}</p>
                   </div>
-                </a>
+                </Link>
               ))}
           </div>
         </div>

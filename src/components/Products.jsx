@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ProductsCard from './ProductsCard';
+import { Link } from 'react-router-dom';
 
 const Products = ({ products }) => {
   return (
