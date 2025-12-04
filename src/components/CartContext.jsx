@@ -16,19 +16,19 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Add product to cart
+
 const addToCart = (product) => {
   setCart((prevCart) => {
     const existingProduct = prevCart.find((item) => item.id === product.id);
     if (existingProduct) {
-      // Return new array with updated quantity
+
       return prevCart.map((item) =>
         item.id === product.id 
           ? { ...item, quantity: item.quantity + 1 } 
           : item
       );
     }
-    // Product doesn't exist, add new one
+
     return [...prevCart, { ...product, quantity: 1 }];
   });
 };

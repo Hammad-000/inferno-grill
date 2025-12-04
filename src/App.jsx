@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import About from "./pages/About";
 import Error from "./pages/Error";  
+import Contact from "./pages/Contact";
 import ProductDetailpg from "./pages/ProductDetailpg";
 import Cart from "./pages/Cart";
 import { CartProvider, useCart } from "./components/CartContext";
@@ -46,11 +47,11 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        {/* Navigation Bar */}
+
         <nav className="navbar p-4 bg-gray-800">
           <div className="container mx-auto">
             <div className="flex justify-between items-center">
-              {/* Logo/Brand */}
+   
               <div className="flex items-center">
                 <NavLink to="/" onClick={closeMenu}>
                   <img 
@@ -67,7 +68,6 @@ function App() {
                 </span>
               </div>
 
-              {/* Desktop Menu */}
               <div className="hidden md:flex flex-1 justify-center">
                 <ul className="flex space-x-6">
                   <li>
@@ -115,17 +115,32 @@ function App() {
                       About
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink 
+                      to="/Contact" 
+                      className={({ isActive }) => 
+                        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                          isActive 
+                            ? 'bg-gray-900 text-yellow-500' 
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                        }`
+                      }
+                      onClick={closeMenu}
+                    >
+                      Contact
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
 
-              {/* Right Side (Cart + Mobile Menu Button) */}
+
               <div className="flex items-center space-x-4">
                 {/* Cart Icon */}
                 <div className="relative">
                   <CartIcon />
                 </div>
 
-                {/* Mobile Menu Button */}
+           
                 <button
                   onClick={toggleMenu}
                   className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
@@ -141,7 +156,7 @@ function App() {
               </div>
             </div>
 
-            {/* Mobile Menu */}
+      
             <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 mt-4 border-t border-gray-700">
                 <NavLink 
@@ -188,7 +203,7 @@ function App() {
           </div>
         </nav>
 
-        {/* Main Content */}
+      
         <div className="min-h-screen bg-gray-50">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -196,6 +211,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/product/:id" element={<ProductDetailpg />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </div>
