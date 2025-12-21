@@ -41,7 +41,13 @@ function Cart() {
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🛒</div>
             <p className="text-xl text-gray-600 mb-4">Your cart is empty</p>
-            <p className="text-gray-500">Add some products to get started!</p>
+            <p className="text-gray-500">Add some products to get started! </p>
+             <a
+            href="/menu"
+            className=" px-5 mt-3 py-3 bg-yellow-400 rounded-lg  font-semibold transition-colors inline-block"
+          >
+            Wanna Order 
+          </a>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

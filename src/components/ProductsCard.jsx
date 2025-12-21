@@ -3,7 +3,53 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { useCart } from "../components/CartContext"; 
 import { useNavigate } from "react-router-dom"; 
 import { Link } from "react-router-dom";
+import { GiHamburger } from "react-icons/gi";
+import { GiMeal } from "react-icons/gi";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
+// Star Rating Component
+const StarRating = ({ rating, size = 16 }) => {
+  // If rating is an object (like from fake store API)
+  const rate = typeof rating === 'object' ? rating?.rate || 0 : rating || 0;
+  const count = typeof rating === 'object' ? rating?.count || 0 : null;
+
+  // Create array for stars
+  const stars = [];
+  const fullStars = Math.floor(rate);
+  const hasHalfStar = rate % 1 >= 0.5;
+
+  // Add full stars
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<FaStar key={`full-${i}`} size={size} className="text-yellow-500" />);
+  }
+
+  // Add half star if needed
+  if (hasHalfStar) {
+    stars.push(<FaStarHalfAlt key="half" size={size} className="text-yellow-500" />);
+  }
+
+  // Add empty stars to make 5 total
+  const emptyStars = 5 - stars.length;
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(<FaRegStar key={`empty-${i}`} size={size} className="text-gray-300" />);
+  }
+
+  return (
+    <div className="flex items-center gap-2">
+      <div className="flex items-center">
+        {stars}
+      </div>
+      <span className="text-gray-600 text-sm font-medium ml-1">
+        {rate.toFixed(1)}
+      </span>
+      {count !== null && (
+        <span className="text-gray-400 text-xs ml-1">
+          ({count} {count === 1 ? 'review' : 'reviews'})
+        </span>
+      )}
+    </div>
+  );
+};
 
 function ProductsCard({ product }) {
   const { addToCart } = useCart();  
@@ -46,21 +92,34 @@ function ProductsCard({ product }) {
             {product.title}
           </h3>
 
-          <div className="flex-1 mb-4">
+          <div className="flex-1 mb-3">
             <p className="text-gray-600 text-sm line-clamp-3">
               {product.description}
             </p>
           </div>
 
+          {/* Star Ratings Section */}
+          <div className="mb-4">
+            <StarRating rating={product.rating} size={23} />
+          </div>
+
           <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
-            <h4 className="text-xl font-bold text-gray-900 hover:text-green-600 transition-colors duration-200">
-              ${product.price}
-            </h4>
+            <div>
+              <h4 className="text-xl font-bold text-gray-900 hover:text-green-600 transition-colors duration-200">
+                ${product.price}
+              </h4>
+              {product.originalPrice && (
+                <p className="text-sm text-gray-500 line-through">
+                  ${product.originalPrice}
+                </p>
+              )}
+            </div>
             <button
               onClick={handleAddToCart}  
               className="p-3 gap-2 border flex rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white transition-all duration-200 transform hover:scale-110"
             >
-              <MdOutlineShoppingCart className="text-xl" /> <p>Add to Cart</p>
+              <p>Order Now</p>
+              <GiMeal className="text-2xl" /> 
             </button>
           </div>
         </div>

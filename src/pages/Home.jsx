@@ -51,7 +51,7 @@ function Home() {
       <main className="container mx-auto px-6 py-8 grow">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome to Our Store
+            Welcome to Our Restaurant
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover amazing products and exclusive deals. Shop the latest trends with us!
