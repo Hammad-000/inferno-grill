@@ -116,7 +116,7 @@ function ProductsCard({ product }) {
             </div>
             <button
               onClick={handleAddToCart}  
-              className="p-3 gap-2 border flex rounded-full bg-gray-100 hover:bg-blue-500 hover:text-white transition-all duration-200 transform hover:scale-110"
+              className="p-3 gap-2 border flex rounded-full bg-amber-50  hover:bg-gradient-to-br  from-red-400 to-orange-400  hover:text-white transition-all duration-200 transform hover:scale-110"
             >
               <p>Order Now</p>
               <GiMeal className="text-2xl" /> 

@@ -154,7 +154,7 @@ function App() {
                     <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 ring-2 ring-yellow-500/30">
                       <FaFire className="text-2xl text-white" />
                     </div>
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-red-600 opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"></div>
+                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-red-600 opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"> </div>
                   </div>
                   <div className="flex flex-col">
                     <span className="text-white font-bold text-2xl lg:text-3xl tracking-tight leading-tight">
@@ -183,7 +183,7 @@ function App() {
                           `px-5 py-2.5 mx-1 rounded-lg text-sm font-semibold transition-all duration-300 ${
                             isActive 
                               ? 'bg-gradient-to-r from-yellow-600 to-red-600 text-white shadow-lg transform -translate-y-1 ring-2 ring-yellow-400/50' 
-                              : 'text-gray-200 hover:bg-gray-800 hover:text-white hover:shadow-md'
+                              : 'text-gray-200 hover:bg-yellow-800 hover:text-white hover:shadow-md'
                           }`
                         }
                         onClick={closeMenu}
