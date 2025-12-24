@@ -98,7 +98,7 @@ function ProductsCard({ product }) {
             </p>
           </div>
 
-          {/* Star Ratings Section */}
+
           <div className="mb-4">
             <StarRating rating={product.rating} size={23} />
           </div>
@@ -116,7 +116,7 @@ function ProductsCard({ product }) {
             </div>
             <button
               onClick={handleAddToCart}  
-              className="p-3 gap-2 border flex rounded-full bg-amber-50  hover:bg-gradient-to-br  from-red-400 to-orange-400  hover:text-white transition-all duration-200 transform hover:scale-110"
+              className="p-3 gap-2 border flex rounded-full bg-amber-50  hover:bg-gradient-to-br   from-red-400 to-orange-400  hover:text-white transition-all duration-300 transform hover:scale-110 ease-in-out "
             >
               <p>Order Now</p>
               <GiMeal className="text-2xl" /> 
