@@ -12,6 +12,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { FaFire, FaHome, FaUtensils, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 function CartIcon() {
   const { cart } = useCart();
@@ -197,7 +199,7 @@ function App() {
                       <NavLink 
                         to={item.path} 
                         className={({ isActive }) => 
-                          `relative px-6 py-3 mx-1 rounded text-sm font- transition-all duration-300 group flex items-center gap-3 overflow-hidden ${
+                          `relative px-6 py-3 mx-1 rounded text-sm font-bold transition-all duration-300 group flex items-center gap-3 overflow-hidden ${
                             isActive 
                               ? ' text-white shadow-lg transform -translate-y-1 ring-2 ' 
                               : 'text-gray-200 hover:text-white hover:shadow-md'
