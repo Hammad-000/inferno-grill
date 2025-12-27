@@ -10,7 +10,7 @@ import { CartProvider, useCart } from "./components/CartContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
-import { FaFire } from "react-icons/fa";
+import { FaFire, FaHome, FaUtensils, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 
 function CartIcon() {
@@ -45,7 +45,7 @@ function CartIcon() {
         
         {/* Cart badge */}
         {cartItemsCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg animate-pulse">
+          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg">
             {cartItemsCount > 9 ? '9+' : cartItemsCount}
           </span>
         )}
@@ -53,7 +53,7 @@ function CartIcon() {
 
       {/* Tooltip */}
       {isHovering && (
-        <div className="absolute right-0 top-full mt-2 w-64 bg-white text-gray-800 text-sm rounded-xl shadow-2xl opacity-0 animate-fadeIn z-50 overflow-hidden border border-gray-200">
+        <div className="absolute right-0 top-full mt-2 w-64 bg-white text-gray-800 text-sm rounded-xl shadow-2xl z-50 overflow-hidden border ">
           <div className="p-3 bg-gradient-to-r from-yellow-50 to-orange-50">
             <div className="font-bold text-gray-900 flex items-center">
               <MdOutlineShoppingCart className="mr-2" />
@@ -90,7 +90,7 @@ function CartIcon() {
                 )}
               </div>
               
-              <div className="mt-3 pt-3 border-t border-gray-200">
+              <div className="mt-3 pt-3 border border-gray-200">
                 <div className="flex justify-between items-center">
                   <span className="font-semibold">Total:</span>
                   <span className="text-lg font-bold text-green-600">${totalPrice.toFixed(2)}</span>
@@ -113,6 +113,7 @@ function CartIcon() {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavHovered, setIsNavHovered] = useState(false);
 
   // Handle scroll effect
   React.useEffect(() => {
@@ -131,15 +132,26 @@ function App() {
     setIsMenuOpen(false);
   };
 
+  const navItems = [
+    { path: "/", label: "Home", icon: FaHome },
+    { path: "/menu", label: "Menu", icon: FaUtensils },
+    { path: "/about", label: "About", icon: FaInfoCircle },
+    { path: "/contact", label: "Contact", icon: FaEnvelope },
+  ];
+
   return (
     <CartProvider>
       <Router>
         {/* Navbar */}
-        <nav className={`navbar sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl py-3 backdrop-blur-sm' 
-            : 'bg-gradient-to-r from-red-900 via-red-800 to-gray-900 py-4'
-        }`}>
+        <nav 
+          className={`navbar sticky top-0 z-50 transition-all duration-300 ${
+            isScrolled 
+              ? 'bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-2xl py-3 backdrop-blur-sm' 
+              : 'bg-gradient-to-r from-red-800 via-red-900 to-gray-900 py-4'
+          }`}
+          onMouseEnter={() => setIsNavHovered(true)}
+          onMouseLeave={() => setIsNavHovered(false)}
+        >
           <div className="container mx-auto px-4 lg:px-6">
             <div className="flex justify-between items-center">
               
@@ -151,13 +163,23 @@ function App() {
                   className="flex items-center space-x-3 group"
                 >
                   <div className="relative">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 ring-2 ring-yellow-500/30">
+                    <div className={`w-12 h-12 rounded-full ${
+                      isNavHovered 
+                        ? 'bg-gradient-to-r from-red-600  to-yellow-500' 
+                        : 'bg-gradient-to-r from-yellow-500 to-red-600'
+                    } flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300 ring-2 ring-yellow-500/30`}>
                       <FaFire className="text-2xl text-white" />
                     </div>
-                    <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-yellow-500 to-red-600 opacity-20 blur-sm group-hover:opacity-30 transition-opacity duration-300"> </div>
+                    <div className={`absolute -inset-1 rounded-full ${
+                      isNavHovered 
+                        ? 'bg-gradient-to-r from-red-600 to-yellow-500 opacity-30 blur-lg' 
+                        : 'bg-gradient-to-r from-yellow-500 to-red-600 opacity-20 blur-sm'
+                    } group-hover:opacity-30 transition-all duration-500`} />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-white font-bold text-2xl lg:text-3xl tracking-tight leading-tight">
+                    <span className={`text-white font-bold text-2xl lg:text-3xl tracking-tight leading-tight transition-all duration-300 ${
+                      isNavHovered ? 'drop-shadow-[0_0_15px_rgba(255,100,0,0.7)]' : ''
+                    }`}>
                       Inferno<span className="text-yellow-400">Grill</span>
                     </span>
                     <span className="text-yellow-300 text-xs font-medium tracking-wider hidden sm:block">
@@ -170,25 +192,38 @@ function App() {
               {/* Desktop Navigation */}
               <div className="hidden lg:flex flex-1 justify-center">
                 <ul className="flex items-center space-x-1">
-                  {[
-                    { path: "/", label: "Home" },
-                    { path: "/menu", label: "Menu" },
-                    { path: "/about", label: "About" },
-                    { path: "/contact", label: "Contact" },
-                  ].map((item) => (
+                  {navItems.map((item) => (
                     <li key={item.path}>
                       <NavLink 
                         to={item.path} 
                         className={({ isActive }) => 
-                          `px-5 py-2.5 mx-1 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                          `relative px-6 py-3 mx-1 rounded text-sm font- transition-all duration-300 group flex items-center gap-3 overflow-hidden ${
                             isActive 
-                              ? 'bg-gradient-to-r from-yellow-600 to-red-600 text-white shadow-lg transform -translate-y-1 ring-2 ring-yellow-400/50' 
-                              : 'text-gray-200 hover:bg-yellow-800 hover:text-white hover:shadow-md'
+                              ? ' text-white shadow-lg transform -translate-y-1 ring-2 ' 
+                              : 'text-gray-200 hover:text-white hover:shadow-md'
                           }`
                         }
                         onClick={closeMenu}
                       >
-                        {item.label}
+                     
+                    
+                        
+                   
+                        {isNavHovered && (
+                          <div className="absolute -left-2 opacity-0 group-hover:opacity-100 group-hover:left-2 transition-all duration-500 delay-100">
+                            <FaFire className=" text-m" />
+                          </div>
+                        )}
+                        
+                      
+                     
+                        
+                        <span className="relative z-10 transition-all duration-300 group-hover:font-bold">
+                          {item.label}
+                        </span>
+                        
+                        {/* Fire trail underline */}
+                        <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-500 to-red-400 group-hover:w-full transition-all duration-500 group-hover:delay-100 rounded" />
                       </NavLink>
                     </li>
                   ))}
@@ -203,7 +238,11 @@ function App() {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={toggleMenu}
-                  className="lg:hidden flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-yellow-600 to-red-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ring-2 ring-yellow-500/30"
+                  className={`lg:hidden flex items-center justify-center w-12 h-12 rounded-xl ${
+                    isNavHovered 
+                      ? 'bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500' 
+                      : 'bg-gradient-to-r from-yellow-600 to-red-600'
+                  } text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ring-2 ring-yellow-500/30`}
                   aria-expanded={isMenuOpen}
                   aria-label="Toggle menu"
                 >
@@ -221,34 +260,68 @@ function App() {
               isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
             }`}>
               <div className="bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl shadow-2xl border border-gray-700 py-4 px-2">
-                {[
-                  { path: "/", label: "Home" },
-                  { path: "/menu", label: "Menu" },
-                  { path: "/about", label: "About" },
-                  { path: "/contact", label: "Contact" },
-                ].map((item, index) => (
+                {navItems.map((item, index) => (
                   <NavLink
                     key={item.path}
                     to={item.path}
                     className={({ isActive }) => 
-                      `flex items-center px-4 py-4 mx-2 my-1 rounded-xl text-base font-medium transition-all duration-300 ${
+                      `relative flex items-center px-4 py-4 mx-2 my-1 rounded-xl text-base font-medium transition-all duration-300 overflow-hidden group ${
                         isActive 
-                          ? 'bg-gradient-to-r from-yellow-600 to-red-600 text-white shadow-lg transform scale-105' 
+                          ? 'bg-gradient-to-r from-yellow-600 to-red-600 text-white shadow-lg' 
                           : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                       }`
                     }
                     onClick={closeMenu}
                     style={{ 
-                      animationDelay: `${index * 100}ms`,
-                      animation: isMenuOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
+                      transitionDelay: `${index * 100}ms`,
                     }}
                   >
-                    <span className="ml-3">{item.label}</span>
+                    {/* Fire icon for mobile */}
+                    <div className="absolute left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <FaFire className="text-yellow-400 text-xs" />
+                    </div>
+                    
+                    <item.icon className={`ml-3 transition-all duration-300 ${
+                      isNavHovered ? 'group-hover:scale-125 group-hover:text-yellow-300' : ''
+                    }`} />
+                    <span className="ml-3 relative z-10">{item.label}</span>
+                    
+                    {/* Mobile hover effect */}
+                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-500 to-red-500 group-hover:w-full transition-all duration-300 rounded-full" />
                   </NavLink>
                 ))}
               </div>
             </div>
           </div>
+
+          {/* Floating Fire Particles (without keyframes) */}
+       
+{isNavHovered && (
+  <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    {[...Array(8)].map((_, i) => (
+      <div 
+        key={i}
+        className="absolute w-1 h-1 bg-gradient-to-b from-yellow-400 to-red-500 rounded-full opacity-0 animate-bounce"
+        style={{
+          left: `${Math.random() * 100}%`,
+          animationDelay: `${i * 0.2}s`,
+          animationDuration: '1.5s',
+          animationIterationCount: 'infinite'
+        }}
+      />
+    ))}
+    {[...Array(4)].map((_, i) => (
+      <div 
+        key={`spark-${i}`}
+        className="absolute w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-0 animate-ping"
+        style={{
+          left: `${15 + (i * 20)}%`,
+          animationDelay: `${i * 0.3}s`,
+        }}
+      />
+    ))}
+  </div>
+)}
         </nav>
 
         {/* Main Content */}
@@ -264,47 +337,6 @@ function App() {
           </Routes>
         </div>
 
-        {/* Add some custom styles for animations */}
-        <style jsx>{`
-          @keyframes slideInLeft {
-            from {
-              opacity: 0;
-              transform: translateX(-20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-          
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(-10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          
-          .animate-fadeIn {
-            animation: fadeIn 0.2s ease-out forwards;
-          }
-          
-          .animate-pulse {
-            animation: pulse 1.5s infinite;
-          }
-          
-          @keyframes pulse {
-            0%, 100% {
-              transform: scale(1);
-            }
-            50% {
-              transform: scale(1.1);
-            }
-          }
-        `}</style>
       </Router>
     </CartProvider>
   );

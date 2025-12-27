@@ -69,7 +69,7 @@ function Home() {
         <div className="text-center mb-12">
           <div className="relative inline-block">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent animate-gradient">
-              Welcome to Flavor Haven
+              Welcome to Inferno Grill
             </h1>
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full"></div>
           </div>
@@ -79,8 +79,8 @@ function Home() {
         </div>
 
         {/* Image Slider */}
-        <div className="relative w-full max-w-6xl mx-auto mb-16">
-          <div className="relative w-full h-80 md:h-[500px] lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl group">
+        <div className="relative w-full max-w-7xl mx-auto  mb-16">
+          <div className="relative w-full h-100 md:h-[500px] lg:h-[600px] overflow-hidden rounded-3xl shadow-2xl group">
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10"></div>
             
