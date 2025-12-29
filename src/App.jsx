@@ -13,6 +13,8 @@ import { IoClose } from "react-icons/io5";
 import { FaFire, FaHome, FaUtensils, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 
 function CartIcon() {
@@ -139,6 +141,8 @@ function App() {
     { path: "/menu", label: "Menu", icon: FaUtensils },
     { path: "/about", label: "About", icon: FaInfoCircle },
     { path: "/contact", label: "Contact", icon: FaEnvelope },
+    { path: "/login", label: "Login", icon: FaEnvelope },
+    { path: "/signup", label: "Signup", icon: FaEnvelope },
   ];
 
   return (
@@ -336,6 +340,9 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+
           </Routes>
         </div>
 
