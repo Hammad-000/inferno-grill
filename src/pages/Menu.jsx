@@ -11,12 +11,14 @@ import { FaSortAmountDown } from "react-icons/fa";
 import { products } from "../../src/data/products";
 import FooterContent from "../components/FooterContent";
 import SortingFilter from "../components/SortingFilter";
+// import { supabase } from "../SupabaseClient";
 
 const initPriceFilter = {
   min: Math.min(...products.map(product => product.price)),
   max: Math.max(...products.map(product => product.price)),
   isApplied: false,
 };
+
 
 function Menu() {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -26,6 +28,9 @@ function Menu() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sorting, setSorting] = useState("");
   const [isSortOpen, setIsSortOpen] = useState(false);
+
+
+  // console.log(supabase)
 
   const filterProducts = useMemo(() => {
     let visibleProducts = getVisibleProducts(

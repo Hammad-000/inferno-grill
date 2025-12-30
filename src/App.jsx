@@ -15,6 +15,9 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-do
 import { motion, AnimatePresence } from "framer-motion";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+// import { supabase } from "../"
+
+
 
 
 function CartIcon() {
@@ -233,8 +236,9 @@ function App() {
                       </NavLink>
                     </li>
                   ))}
-                </ul>
+                </ul>         
               </div>
+          
 
               {/* Right Side Icons */}
               <div className="flex items-center space-x-4">

@@ -1,82 +1,64 @@
-import { useNavigate } from "react-router-dom"
-import Footer from "../components/FooterContent"
-import { supabase } from "../SupabaseClient"
-import { useState } from "react"
-import FooterContent from "../components/FooterContent"
+// src/pages/Signup.jsx
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth"; // Import the useAuth hook
 
-function Signup() {
+const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const { signUpNewUser, loading, error: authError } = useAuth();
+  const navigate = useNavigate();
 
-    const navigation = useNavigate()
-    let [ emailVal , setEmailVal] = useState("")
-    let [ passwVal , setPasswVal] = useState("")
+  const handleSignUp = async (e) => {
+    e.preventDefault();
 
-    function checkAuth(e) {
+    const result = await signUpNewUser(email, password);
 
-        e.preventDefault()
-        if (emailVal === 'admin@gmail.com' && passwVal === "12345") {
-            navigation('/dashboard')
-            alert('Login Successfully')
-        }
-        else alert('something went wrong')
-        
+    if (result.success) {
+      navigate("/dashboard"); // Navigate to dashboard on success
+    } else {
+      setError(authError || result.error.message); // Show error message on failure
     }
+  };
 
-    return (
+  return (
+    <div>
+        <div  className="">
 
-        <section>
-          
-
-   
-            <div className="flex items-center justify-center py-10 px-4 mt-35 mb-8">
-
-                <div className="bg-white shadow-2xl rounded-3xl w-full max-w-xl p-8 border border-gray-200">
-
-         
-                    <h2 className="text-3xl font-bold text-center ">Sign up</h2>
-                  
-
-                    <form className="flex flex-col gap-7">
-
-               
-                        <div className="flex flex-col gap-2">
-                            <label className="font-semibold text-gray-600">Email</label>
-                            <input type="email" onChange={(e) => setEmailVal(e.target.value)}
-                                placeholder="Enter your email" 
-                                className="placeholder:text-[16px] px-4 py-3 rounded-xl border border-gray-400 bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none" 
-                            />
-                        </div>
-
-                      
-                        <div className="flex flex-col gap-2">
-                            <label className="font-semibold text-gray-600">Password</label>
-                            <input type="password" onChange={(e) => setPasswVal(e.target.value)}
-                                placeholder="Enter your password" 
-                                className="placeholder:text-[16px] px-4 py-3 rounded-xl border border-gray-400 bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none" 
-                            />
-                        </div>
-
-                     
-                        <button onClick={(e) => checkAuth(e)}
-                            className="bg-gradient-to-br p-3 rounded-2xl from-yellow-500 to-orange-600 text-white shadow-lg ring-2 ring-yellow-400">
-                            Login
-                        </button>
-
-                    </form>
-
-                    <p className="flex justify-center gap-2 p-5 text-gray-700">
-                        Already have an account?
-                        <button onClick={() => navigation('/login')} className="text-red-500 font-semibold hover:underline pl-1 cursor-pointer"> Login</button>
-                    </p>
-
-                </div>
-
+      <form onSubmit={handleSignUp} className="lex items-center justify-center py-10 px-4 mt-35 mb-8">
+        <h2 className="font-bold pb-2">Sign up today!</h2>
+        <p>
+          Already have an account? <Link to="/">Sign in</Link>
+        </p>
+        <div className="flex flex-col py-4">
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            className="placeholder:text-[16px] px-4 py-3 rounded-xl border border-gray-400 bg-gray-50 focus:ring-2 focus:ring-orange-500 outline-none"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            />
+        </div>
+        <div className="flex flex-col py-4">
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            className="placeholder:text-[16px] px-4 py-3 rounded-xl border border-gray-400 bg-gray-50 focus:ring-2 focus:ring-orange-500 outline-none"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            />
+        </div>
+        <button type="submit" disabled={loading} className="bg-gradient-to-br p-3 rounded-2xl from-yellow-500 to-orange-600 text-white shadow-lg ring-2 ring-yellow-400">
+          Sign Up
+        </button>
+        {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+      </form>
+    </div>
             </div>
-
-            <FooterContent />
-        </section>
-
-    )
-
-}
+  );
+};
 
 export default Signup;

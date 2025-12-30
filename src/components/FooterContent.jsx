@@ -302,21 +302,8 @@ const FooterContent = () => {
         <span className="text-white font-bold">↑</span>
       </button>
 
-      {/* Add some responsive adjustments */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .container {
-            padding-left: 1rem;
-            padding-right: 1rem;
-          }
-        }
-        
-        @media (max-width: 640px) {
-          .grid-cols-2 {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
+ 
+
     </footer>
   );
 };
