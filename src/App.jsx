@@ -208,7 +208,7 @@ function App() {
                         className={({ isActive }) => 
                           `relative px-6 py-3 mx-1 rounded text-sm font-bold transition-all duration-300 group flex items-center gap-3 overflow-hidden ${
                             isActive 
-                              ? ' text-white shadow-lg transform -translate-y-1 ring-2 ' 
+                              ? '  absolute bottom-0 left-0  text-white bg-orange-600  group-hover:w-full transition-all duration-500 group-hover:delay-100 rounded' 
                               : 'text-gray-200 hover:text-white hover:shadow-md'
                           }`
                         }
