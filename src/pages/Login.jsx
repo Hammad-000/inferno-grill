@@ -40,7 +40,6 @@ const Login = () => {
     localStorage.setItem('authToken', 'token-' + user.id);
     localStorage.setItem('userData', JSON.stringify(userData));
     
-    // Force reload to update auth state
     window.location.href = '/';
     
   } catch (err) {
@@ -78,12 +77,12 @@ const Login = () => {
                 <FaUtensils className="text-amber-700 text-3xl" />
               </div>
               <h1 className="text-4xl font-bold">
-                Gourmet<span className="text-amber-200">Delight</span>
+                Inferno<span className="text-amber-200">Grill</span>
               </h1>
             </div>
             
             <h2 className="text-5xl font-bold mb-6 leading-tight">
-              Welcome Back to <span className="text-amber-200">Flavor Town</span>
+              Welcome Back to <span className="text-amber-200">Inferno Grill</span>
             </h2>
             <p className="text-xl mb-8 text-amber-100">
               Sign in to continue your culinary journey. Access your favorite dishes, 

@@ -111,7 +111,7 @@ const Signup = () => {
                 <FaUtensils className="text-amber-700 text-3xl" />
               </div>
               <h1 className="text-4xl font-bold">
-                Gourmet<span className="text-amber-200">Delight</span>
+                Inferno<span className="text-amber-200">Grill</span>
               </h1>
             </div>
             
@@ -173,7 +173,7 @@ const Signup = () => {
                 <FaUtensils className="text-white text-2xl" />
               </div>
               <h1 className="text-3xl font-bold text-gray-800">
-                Gourmet<span className="text-amber-600">Delight</span>
+               Inferno<span className="text-amber-600">Grill</span>
               </h1>
             </div>
           </div>

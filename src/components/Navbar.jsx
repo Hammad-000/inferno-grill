@@ -53,7 +53,7 @@ function Navbar() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white tracking-tight">
-                  Gourmet<span className="text-amber-200">Delight</span>
+                  Inferno<span className="text-amber-200">Grill</span>
                 </h1>
                 {user && (
                   <p className="text-xs text-amber-100 mt-1">
