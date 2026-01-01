@@ -78,10 +78,9 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logout = () => {
+ const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-    navigate("/login");
+    localStorage.removeItem('user'); // Remove user data from local storage
   };
 
   const value = {
@@ -95,7 +94,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

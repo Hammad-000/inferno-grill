@@ -12,6 +12,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import Logout from "./pages/Logout";
+
 
 // Component that handles conditional rendering based on auth state
 function AppContent() {
@@ -51,6 +53,7 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </div>
   );
