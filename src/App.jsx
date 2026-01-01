@@ -10,9 +10,9 @@ import { CartProvider } from "./components/CartContext";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout"; // Add this import
 import Navbar from "./components/Navbar";
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import Logout from "./pages/Logout";
 
 
 // Component that handles conditional rendering based on auth state
@@ -42,6 +42,8 @@ function AppContent() {
           <Route path="/product/:id" element={<ProductDetailpg />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<div>Profile Page</div>} />
+          <Route path="/logout" element={<Logout />} /> {/* Add this route */}
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
@@ -52,8 +54,8 @@ function AppContent() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<Logout />} /> {/* Add this route */}
         <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/logout" element={<Logout />} />
       </Routes>
     </div>
   );

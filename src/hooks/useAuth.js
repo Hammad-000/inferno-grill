@@ -1,113 +1,168 @@
-// src/hooks/useAuth.js
-import { useState, useEffect, useContext, createContext } from "react";
-import { useNavigate } from "react-router-dom";
+// context/AuthContext.js
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// Create Auth Context
 const AuthContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
 
-export function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [initializing, setInitializing] = useState(true);
   const navigate = useNavigate();
 
+  // Check for existing auth on mount
   useEffect(() => {
-    // Check for existing user in localStorage
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
+    const token = localStorage.getItem('authToken');
+    const userData = localStorage.getItem('userData');
+    
+    if (token && userData) {
       try {
-        const userData = JSON.parse(savedUser);
-        setUser(userData);
-      } catch (err) {
-        console.error("Error parsing user data:", err);
+        setUser(JSON.parse(userData));
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userData');
       }
     }
+    
     setInitializing(false);
   }, []);
 
-  const login = async (email, password) => {
-    setLoading(true);
-    setError(null);
-    
+  const signup = async (email, password) => {
     try {
-      // Mock authentication - replace with real auth
-      // For demo purposes, accept any email/password
-      const userData = { 
-        email, 
+      // Validate input
+      if (!email || !password) {
+        return { success: false, error: 'Email and password are required' };
+      }
+
+      if (password.length < 6) {
+        return { success: false, error: 'Password must be at least 6 characters' };
+      }
+
+      // Check if user already exists (in localStorage for demo)
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const existingUser = users.find(u => u.email === email);
+      
+      if (existingUser) {
+        return { success: false, error: 'User already exists with this email' };
+      }
+
+      // Create new user
+      const newUser = {
+        id: Date.now(),
+        email,
+        password, // In real app, this should be hashed!
         name: email.split('@')[0],
-        id: Date.now().toString()
+        createdAt: new Date().toISOString()
       };
+
+      // Save to localStorage (for demo)
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Generate auth data
+      const authData = {
+        token: 'mock-jwt-token-' + newUser.id,
+        user: {
+          id: newUser.id,
+          email: newUser.email,
+          name: newUser.name,
+          createdAt: newUser.createdAt
+        }
+      };
+
+      // Store auth data
+      localStorage.setItem('authToken', authData.token);
+      localStorage.setItem('userData', JSON.stringify(authData.user));
       
-      setUser(userData);
-      localStorage.setItem('user', JSON.stringify(userData));
+      // Update state
+      setUser(authData.user);
+
+      // Navigate to home
+      navigate('/');
+
+      return { success: true, user: authData.user };
       
-      // Navigate to home after successful login
-      setTimeout(() => {
-        navigate("/");
-      }, 500);
-      
-      return { success: true, user: userData };
-    } catch (err) {
-      setError("An unexpected error occurred.");
-      return { success: false, error: err };
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      console.error('Signup error:', error);
+      return { success: false, error: 'Signup failed. Please try again.' };
     }
   };
 
-  const signup = async (email, password) => {
-    setLoading(true);
-    setError(null);
-    
+  const login = async (email, password) => {
     try {
-      // Mock signup - replace with real auth
-      const userData = { 
-        email, 
-        name: email.split('@')[0],
-        id: Date.now().toString()
+      // Validate input
+      if (!email || !password) {
+        return { success: false, error: 'Email and password are required' };
+      }
+
+      // Check if user exists (in localStorage for demo)
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(u => u.email === email && u.password === password);
+      
+      if (!user) {
+        return { success: false, error: 'Invalid email or password' };
+      }
+
+      // Generate auth data
+      const authData = {
+        token: 'mock-jwt-token-' + user.id,
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          createdAt: user.createdAt
+        }
       };
+
+      // Store auth data
+      localStorage.setItem('authToken', authData.token);
+      localStorage.setItem('userData', JSON.stringify(authData.user));
       
-      setUser(userData);
-      localStorage.setItem('user', JSON.stringify(userData));
+      // Update state
+      setUser(authData.user);
+
+      // Navigate to home
+      navigate('/');
+
+      return { success: true, user: authData.user };
       
-      // Navigate to home after successful signup
-      setTimeout(() => {
-        navigate("/");
-      }, 500);
-      
-      return { success: true, user: userData };
-    } catch (err) {
-      setError("An unexpected error occurred.");
-      return { success: false, error: err };
-    } finally {
-      setLoading(false);
+    } catch (error) {
+      console.error('Login error:', error);
+      return { success: false, error: 'Login failed. Please try again.' };
     }
   };
 
   const logout = () => {
+    // Clear all auth-related data
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    
+    // Reset user state
     setUser(null);
-    localStorage.removeItem('user');
-    navigate("/login");
-  };
-
-  const value = {
-    user,
-    error,
-    loading,
-    initializing,
-    login,
-    signup,
-    logout,
+    
+    // Return success for the logout component
+    return { success: true, message: 'Logged out successfully' };
   };
 
   return (
-    <AuthContext.Provider value={value}>
+    <AuthContext.Provider
+      value={{
+        user,
+        initializing,
+        login,
+        signup,
+        logout
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
-}
+};
