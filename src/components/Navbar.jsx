@@ -4,6 +4,9 @@ import { FaHome, FaUtensils, FaInfoCircle, FaEnvelope, FaShoppingCart } from "re
 import { BiLogOut } from "react-icons/bi";
 import { useCart } from './CartContext';
 import { useAuth } from '../context/AuthContext';
+import { RiDashboardHorizontalFill } from "react-icons/ri";
+import Dashboard from "../Dashobard-Elements/Dashboard"
+
 
 function Navbar() {
   const location = useLocation();
@@ -24,6 +27,7 @@ function Navbar() {
     { path: "/menu", label: "Menu", icon: FaUtensils },
     { path: "/about", label: "About", icon: FaInfoCircle },
     { path: "/contact", label: "Contact", icon: FaEnvelope },
+    { path: "/dashboard", label: "Dashboard", icon: RiDashboardHorizontalFill },
   ];
 
   const handleLogout = async () => {
