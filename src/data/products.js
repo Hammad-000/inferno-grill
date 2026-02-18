@@ -6,7 +6,7 @@ export const products = [
     title: "Burger1",
     description:
       "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
-    price: 100,
+    price: 300,
     category: "Burger",
     rating: 5,
   },
@@ -16,7 +16,7 @@ export const products = [
     title: "Burger2",
     description:
       "Aromatic arabian burger with 6 pacs of hot shots with KFC famous vietnamese sauce",
-    price: 200,
+    price: 350,
     category: "Burger",
     rating: 4,
   },
@@ -25,7 +25,7 @@ export const products = [
     image: "/images/burger3.webp",
     title: "Burger3",
     description: "Crispy zinger with crispy rolled into paratha",
-    price: 300,
+    price: 380,
     category: "Burger",
     rating: 3,
   },
@@ -46,7 +46,7 @@ export const products = [
     title: "Shawarma1",
     description:
       "Aromatic arabian shawarma with 6 pacs of hot shots with KFC famous vietnamese sauce",
-    price: 300,
+    price: 250,
     category: "Shawarma",
     rating: 1,
   },

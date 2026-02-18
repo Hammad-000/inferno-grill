@@ -16,12 +16,10 @@ function Navbar() {
   const { totalItems } = useCart();
   const { user, logout } = useAuth();
 
-  // Update active path when location changes
   useEffect(() => {
     setActivePath(location.pathname);
   }, [location]);
 
-  // Navigation Items
   const navItems = [
     { path: "/", label: "Home", icon: FaHome },
     { path: "/menu", label: "Menu", icon: FaUtensils },
@@ -79,7 +77,7 @@ function Navbar() {
                     onClick={() => navigate(item.path)}
                     className={`
                       flex items-center space-x-2 px-4 py-3 rounded-lg font-semibold 
-                      transition-all duration-300 transform hover:scale-105
+                      transition-all duration-300 transform hover:scale-105 cursor-pointer
                       ${isActive 
                         ? 'bg-white text-amber-700 shadow-md' 
                         : 'text-amber-100 hover:bg-amber-800 hover:text-white'
@@ -98,7 +96,7 @@ function Navbar() {
                   onClick={() => navigate("/cart")}
                   className={`
                     flex items-center space-x-2 px-4 py-3 rounded-lg font-semibold
-                    transition-all duration-300 transform hover:scale-105
+                    transition-all duration-300 transform hover:scale-105 cursor-pointer     
                     ${activePath === "/cart"
                       ? 'bg-white text-amber-700 shadow-md' 
                       : 'text-amber-100 hover:bg-amber-800 hover:text-white'
@@ -122,7 +120,7 @@ function Navbar() {
                 onClick={confirmLogout}
                 className="flex items-center space-x-2 px-4 py-3 rounded-lg font-semibold 
                          text-amber-100 hover:bg-red-600 hover:text-white 
-                         transition-all duration-300 transform hover:scale-105 ml-4"
+                         transition-all duration-300 transform hover:scale-105 ml-4 cursor-pointer "
               >
                 <BiLogOut className="text-xl" />
                 <span>Logout</span>

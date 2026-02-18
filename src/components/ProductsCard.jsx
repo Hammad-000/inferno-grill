@@ -106,17 +106,17 @@ function ProductsCard({ product }) {
           <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
             <div>
               <h4 className="text-xl font-bold text-gray-900 hover:text-green-600 transition-colors duration-200">
-                ${product.price}
+                {product.price}
               </h4>
               {product.originalPrice && (
                 <p className="text-sm text-gray-500 line-through">
-                  ${product.originalPrice}
+                  {product.originalPrice}
                 </p>
               )}
             </div>
             <button
               onClick={handleAddToCart}  
-              className="p-3 gap-2 border flex rounded-full bg-amber-50  hover:bg-gradient-to-br   from-red-400 to-orange-400  hover:text-white transition-all duration-300 transform hover:scale-110 ease-in-out "
+              className="p-3 gap-2 border flex rounded-full bg-amber-50  hover:bg-gradient-to-br   from-red-400 to-orange-400 hover:text-white transition-all duration-300 transform hover:scale-110 ease-in-out cursor-pointer "
             >
               <p>Order Now</p>
               <GiMeal className="text-2xl" /> 
