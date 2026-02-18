@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineArrowRight, AiOutlineStar, AiOutlineFire, AiOutlineHeart, AiOutlineClockCircle } from "react-icons/ai";
 import { FiClock, FiPackage, FiHeadphones, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { GiChickenLeg, GiPizzaSlice, GiHamburger } from "react-icons/gi";
+import { MdOutlineDinnerDining } from "react-icons/md";
 import { motion } from "framer-motion";
 import FooterContent from "../components/FooterContent";
 
@@ -462,7 +463,7 @@ function Home() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                  className={`px-6 py-3 rounded-full transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                     activeCategory === category.id
                       ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg transform scale-105'
                       : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
@@ -492,7 +493,7 @@ function Home() {
                   viewport={{ once: true }}
                   className="relative group"
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <div className="relative aspect-square overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer">
                     <img
                       src={item.src}
                       alt={item.name}
@@ -546,17 +547,18 @@ function Home() {
               <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="/menu"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-bold rounded-full hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group"
+                  className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-bold rounded-full hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group  "
                 >
                   Explore Full Menu
-                  <AiOutlineArrowRight className="text-xl group-hover:translate-x-2 transition-transform" />
+                  <AiOutlineArrowRight className="text-xl group-hover:translate-x-2 transition-transform " />
                 </a>
                 <a
                   href="/reservation"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-800 font-bold rounded-full border-2 border-orange-300 hover:border-orange-400 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-800 font-bold rounded-full border-2 border-orange-300 hover:border-orange-400 hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:"
+
                 >
                   Book a Table
-                  <span className="text-amber-500">✨</span>
+                  <span className="text-2xl font-bold "><MdOutlineDinnerDining /></span>
                 </a>
               </div>
             </motion.div>
@@ -580,7 +582,7 @@ function Home() {
             </div>
             
             <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              GET 25% OFF YOUR FIRST ORDER!
+              GET 20% OFF YOUR FIRST ORDER!
             </h3>
             
             <p className="text-amber-100 text-lg mb-8 max-w-2xl mx-auto">
