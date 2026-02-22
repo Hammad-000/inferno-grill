@@ -76,7 +76,7 @@ function Cart() {
                           {product.title}
                         </h4>
                         <p className="text-lg font-bold text-green-600">
-                          ${product.price.toFixed(2)}
+                          Rs {product.price.toFixed(2)}
                         </p>
                       </div>
 
@@ -84,7 +84,7 @@ function Cart() {
                       <div className="flex items-center space-x-3">
                         <button
                           onClick={() => decrementQuantity(product.id)}
-                          className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                          className="w-8 h-8 flex items-center justify-center  cursor-pointer bg-gray-200 rounded-full hover:bg-red-400 transition-colors"
                           aria-label="Decrease quantity"
                         >
                           <span className="text-lg font-semibold">−</span>
@@ -94,7 +94,7 @@ function Cart() {
                         </span>
                         <button
                           onClick={() => incrementQuantity(product.id)}
-                          className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                          className="w-8 h-8 flex items-center justify-center cursor-pointer bg-gray-200 rounded-full hover:bg-green-400 transition-colors"
                           aria-label="Increase quantity"
                         >
                           <span className="text-lg font-semibold">+</span>
@@ -104,11 +104,11 @@ function Cart() {
                       {/* Total Price & Remove */}
                       <div className="flex flex-col items-center gap-2">
                         <span className="text-lg font-bold text-gray-800">
-                          ${(product.price * product.quantity).toFixed(2)}
+                          Rs {(product.price * product.quantity).toFixed(2)}
                         </span>
                         <button
                           onClick={() => removeFromCart(product.id)}
-                          className="text-red-500 hover:text-red-700 text-sm font-medium transition-colors"
+                          className="text-red-500 hover:text-red-700 cursor-pointer text-sm font-medium transition-colors"
                         >
                           Remove
                         </button>
@@ -128,7 +128,7 @@ function Cart() {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-gray-600">
                     <span>Subtotal</span>
-                    <span>${calculateTotalPrice().toFixed(2)}</span>
+                    <span>Rs {calculateTotalPrice().toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Shipping</span>
@@ -136,11 +136,11 @@ function Cart() {
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>Tax</span>
-                    <span>${(calculateTotalPrice() * 0.1).toFixed(2)}</span>
+                    <span>Rs {(calculateTotalPrice() * 0).toFixed(2)}</span>
                   </div>
                   <div className="border-t pt-3 flex justify-between text-lg font-bold text-gray-800">
                     <span>Total</span>
-                    <span>${(calculateTotalPrice() * 1.1).toFixed(2)}</span>
+                    <span>Rs {(calculateTotalPrice() * 1).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@ function Cart() {
                         : 'bg-gray-400 cursor-not-allowed'
                     }`}
                   >
-                    Confirm Order - ${(calculateTotalPrice() * 1.1).toFixed(2)}
+                    Confirm Order - Rs {(calculateTotalPrice() * 1.1).toFixed(2)}
                   </button>
                 </form>
               </div>

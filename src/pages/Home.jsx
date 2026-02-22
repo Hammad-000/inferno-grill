@@ -331,7 +331,7 @@ function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             {[
               {
                 img: "/images/broast1.avif",
@@ -424,7 +424,7 @@ function Home() {
                       </div>
                       <button 
                         onClick={goToMenu}
-                        className="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        className="px-6 cursor-pointer p-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                       >
                        Got To Menu
                       </button>
@@ -458,7 +458,7 @@ function Home() {
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center gap-3 mb-10 ">
               {categories.map((category) => (
                 <button
                   key={category.id}
@@ -515,7 +515,7 @@ function Home() {
                       </div>
                       <button 
                         onClick={goToMenu}
-                        className="mt-3 w-full py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                        className="mt-3 w-full cursor-pointer py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
                       >
                         Got To Menu
                       </button>

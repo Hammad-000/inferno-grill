@@ -75,7 +75,7 @@ function ProductDetailpg() {
           {/* Product Details */}
           <div className="lg:w-1/2">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">{product.title}</h1>
-            <p className="text-2xl font-bold text-amber-600 mb-6">${product.price}</p>
+            <p className="text-2xl font-bold text-amber-600 mb-6">Rs{product.price}</p>
             
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">Description</h3>
@@ -98,14 +98,14 @@ function ProductDetailpg() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+                  className="w-10 h-10 cursor-pointer rounded-full border border-gray-300 flex items-center justify-center hover:bg-red-400"
                 >
                   -
                 </button>
-                <span className="text-lg font-semibold w-8 text-center">{quantity}</span>
+                <span className="text-lg  font-semibold w-8 text-center">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+                  className="w-10 h-10 cursor-pointer rounded-full border border-gray-300 flex items-center justify-center hover:bg-green-400"
                 >
                   +
                 </button>
@@ -115,14 +115,13 @@ function ProductDetailpg() {
             {/* Add to Cart Button */}
             <button 
               onClick={handleAddToCart}
-              className="w-full py-4 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg mb-4"
+              className="w-full py-4 bg-amber-500  cursor-pointer hover:bg-amber-600 text-white rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg mb-4"
             >
-              Add to Cart - ${(product.price * quantity).toFixed(2)}
+              Order Now - Rs {(product.price * quantity).toFixed(2)}
             </button>
-
             {/* Additional Info */}
             <div className="border-t pt-4">
-              <div className="flex items-center gap-4 text-sm text-gray-600">
+              <div className="flex items-center gap-4 text-sm text-gray-600 cursor-pointer">
                 <span>✅ In Stock</span>
                 <span>🚚 Free Delivery</span>
                 <span>🔒 Secure Checkout</span>
@@ -151,7 +150,7 @@ function ProductDetailpg() {
                   />
                   <div className="p-4">
                     <h3 className="font-semibold mb-2">{relatedProduct.title}</h3>
-                    <p className="text-amber-600 font-bold">${relatedProduct.price}</p>
+                    <p className="text-amber-600 font-bold">Rs {relatedProduct.price}</p>
                   </div>
                 </Link>
               ))}

@@ -36,7 +36,7 @@ export const products = [
     title: "Burger4",
     description:
       "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
-    price: 350,
+    price:  350,
     category: "Burger",
     rating: 2,
   },
