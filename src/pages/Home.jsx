@@ -331,7 +331,7 @@ function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cursor-pointer ">
             {[
               {
                 img: "/images/broast1.avif",

@@ -97,7 +97,7 @@ function About() {
     { number: "50,000+", label: "Happy Customers", icon: <FaUsers className="text-2xl" /> },
     { number: "100+", label: "Menu Items", icon: <FaUtensils className="text-2xl" /> },
     { number: "98%", label: "Customer Satisfaction", icon: <FaStar className="text-2xl" /> },
-    { number: "15min", label: "Average Delivery Time", icon: <FaTruck className="text-2xl" /> }
+    { number: "35min", label: "Average Delivery Time", icon: <FaTruck className="text-2xl" /> }
   ];
 
   const qualityFeatures = [
