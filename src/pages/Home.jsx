@@ -5,6 +5,8 @@ import { GiChickenLeg, GiPizzaSlice, GiHamburger } from "react-icons/gi";
 import { MdOutlineDinnerDining } from "react-icons/md";
 import { motion } from "framer-motion";
 import FooterContent from "../components/FooterContent";
+import { Link } from 'react-router-dom'
+
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -545,21 +547,18 @@ function Home() {
                 Join thousands of satisfied customers who have experienced the Inferno Grill difference
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="/menu"
+                <Link to="/menu"
                   className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-bold rounded-full hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group  "
                 >
                   Explore Full Menu
                   <AiOutlineArrowRight className="text-xl group-hover:translate-x-2 transition-transform " />
-                </a>
-                <a
-                  href="/reservation"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-800 font-bold rounded-full border-2 border-orange-300 hover:border-orange-400 hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:"
+                </Link>
 
-                >
-                  Book a Table
-                  <span className="text-2xl font-bold "><MdOutlineDinnerDining /></span>
-                </a>
+                <Link to="/contact"
+                  className="inline-flex items-center gap-3 px-10 py-4 bg-white text-gray-800 font-bold rounded-full border-2 border-orange-300 hover:border-orange-400 hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:"
+                       >
+                  Book a Table <span className="text-2xl font-bold "><MdOutlineDinnerDining /></span>
+                </Link>
               </div>
             </motion.div>
           </div>

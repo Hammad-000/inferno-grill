@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  Clock, 
-  CheckCircle,
-  MessageSquare,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin,
-  Globe,
-  Users,
-  Star,
-  Award,
-  Truck,
-  Shield,
-  Heart
-} from 'lucide-react';
+import { Mail, Phone,  MapPin, Send, Clock, CheckCircle, MessageSquare, Facebook ,
+  Twitter, Instagram, Linkedin, Globe, Users, Star, Award, Truck, Shield, Heart} from 'lucide-react';
 import FooterContent from '../components/FooterContent';
+import { Link } from 'react-router-dom'
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -110,10 +94,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-red-900 via-orange-800 to-amber-700 py-16 px-4">
+      <div className="relative overflow-hidden bg-gradient-to-r from-red-800 via-orange-600 to-amber-700 py-16 px-4">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute top-10 right-10 w-64 h-64 bg-red-500/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-red-700 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -125,18 +109,18 @@ const Contact = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            <a 
-              href="#contact-form" 
+            <Link 
+              to="/contact" 
               className="px-8 py-4 bg-white text-red-700 font-bold rounded-xl hover:bg-orange-50 hover:scale-105 transition-all duration-300 shadow-xl"
             >
               Send Message
-            </a>
-            <a 
-              href="tel:+92123456799" 
+            </Link>
+            <Link
+             to="tel:+92123456799" 
               className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 hover:scale-105 transition-all duration-300"
             >
               Call Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>
