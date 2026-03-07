@@ -152,15 +152,15 @@ function Cart() {
                             Rs {product.price.toFixed(2)} each
                           </p>
                           {/* Drink selector */}
-                          <div className="mt-2">
-                            <label className="text-sm text-gray-600 mr-2 cursor-pointer">Add drink:</label>
+                          <div className="mt-2 ">
+                            <label className="text-sm text-gray-600 mr-2 cursor-pointer ">Add drink:</label>
                             <select
                               value={drinkId}
                               onChange={(e) => handleDrinkChange(product.id, e.target.value)}
                               className="p-1 border rounded text-sm cursor-pointer "
                             >
                               {drinkOptions.map(option => (
-                                <option key={option.id} value={option.id}>
+                                <option key={option.id} value={option.id} className=" cursor-pointer" >
                                   {option.name} {option.price > 0 ? `(+Rs ${option.price})` : ''}
                                 </option>
                               ))}
